@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: white;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,78 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+#nav ul {
+    display: none;
+}
+
+#nav li:hover > ul {
+    display: block;
+}
+
+#logo {
+    padding-top: 0;
+}
+
+#glyph {
+    height: 150px;
+    margin-right: 8px;
+    margin-top: 8px;
+    font-size: 50px;
+    color: #e78200;
+    text-align: center;
+    padding-top: 15px;
+    background-color: #083b66;
+    border-style: outset;
+    border-width: 4px;
+    border-color: chocolate;
+    border-radius: 25px;
+    opacity: 0.85;
+}
+    #glyph:hover {
+        opacity: 1;
+        cursor: pointer;
+        box-shadow: -2px 0 black, 2px 0 black, 0 12px 5px -3px black;
+    }
+#desc{
+    font-size: 18px;
+    font-style: initial;
+}
+
+.erpDesc {
+    opacity: 0,8;
+}
+
+#detailsDiv {
+    
+    margin-top: 50px;
+    border-style: groove none none none;
+    border-width: 4px;
+    border-color: chocolate;
+    
+}
+
+#detailsDiv2 {
+    background-color: lightgrey;
+}
+
+.jumbotron {
+    margin-bottom: 0px;
+    background-image: url(../resources/jumb_background.png);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow: black 0.3em 0.3em 0.3em;
+    opacity: 0.8;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: #083b66;
+    width: 130px;
+    height: 60px;
+    font-size: 30px;
+    text-align: center;
 }

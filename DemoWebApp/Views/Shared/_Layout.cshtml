@@ -4,6 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>@ViewBag.Title — moja aplikacja platformy ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -16,23 +19,71 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nazwa aplikacji", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" id="logo" href="#"><img src="~/resources/company_icon_menu.png" alt="Company" height="50" width="250"></a>
+              @*@Html.ActionLink("LOGO", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Informacje", "About", "Home")</li>
+                <ul class="nav navbar-nav navbar-right" id="nav">
+                    <li>@Html.ActionLink("Firma", "Index", "Home")
+                        <ul>
+                            <li>@Html.ActionLink("Profil", "Profil", "NavCompany")</li>
+                            <li>@Html.ActionLink("Informacje", "Info", "NavCompany")</li>
+                            <li>@Html.ActionLink("Historia", "History", "NavCompany")</li>
+                            <li>@Html.ActionLink("Partnerzy", "Partners", "NavCompany")</li>
+                            <li>@Html.ActionLink("Rekomendacje", "Recomendation", "NavCompany")</li>
+                            <li>@Html.ActionLink("Certyfikaty", "Certificate", "NavCompany")</li>
+                            <li>@Html.ActionLink("Zarząd", "ExBoard", "NavCompany")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Oferta", "About", "Home")
+                        <ul>
+                            <li><a href="#">Szkolenia</a></li>
+                            <li><a href="#">Program ERP</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Branże", "Contact", "Home")
+                        <ul>
+                            <li><a href="#">Budownictwo</a></li>
+                            <li><a href="#">Produkcja</a></li>
+                            <li><a href="#">Spółdzielnie mieszkaniowe</a></li>
+                            <li><a href="#">Zakłady komunalne</a></li>
+                            <li><a href="#">Energetyka cieplna</a></li>
+                            <li><a href="#">Jednostki budżetowe</a></li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Kariera", "About", "Home")
+                        <ul>
+                            <li>@Html.ActionLink("Aktualne Oferty Pracy", "Offers", "NavCareer")</li>
+                            <li><a href="#">Staże i praktyki</a></li>
+                            <li><a href="#">Proces rekrutacji</a></li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                 </ul>
             </div>
         </div>
     </div>
+    
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year — moja aplikacja platformy ASP.NET</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <p>&copy; @DateTime.Now.Year MVC Demo</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <p> Kontakt: daniel177p@gmail.com</p>
+                    </div>
+                    
+                </div>
+            </div>
+            
         </footer>
     </div>
 

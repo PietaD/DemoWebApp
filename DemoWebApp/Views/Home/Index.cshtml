@@ -1,31 +1,84 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using DemoWebApp.Models;
+
+
+@{
+    ViewBag.Title = "Index";
 }
 
+
+
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>Rozwiązania dla Twojej firmy ></h1>
+    <p class="lead">Firma Company tworzy oprogramowanie do zcentralizowanego zarządzania przedsiębiorstwem</p>
+    <p><a href="@Url.Action("Index", "Home")" class="btn btn-info btn-lg">O nas </a></p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <h1>
+        Program ERP <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+    </h1>
+
+<div class="container" id="erpDesc">
+    <div class="col-lg-2" id="glyph">
+        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+        <p id="desc">Kontrola Dostępu</p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="col-lg-2" id="glyph">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        <p id="desc">Zasoby Ludzkie</p>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-lg-2" id="glyph">
+        <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>
+        <p id="desc">Finanse i Księgowość</p>
+    </div>
+    <div class="col-lg-2" id="glyph">
+        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+        <p id="desc">Dane</p>
     </div>
 </div>
+
+<div class="container" id="erpDesc">
+    <div class="col-lg-2" id="glyph">
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+        <p id="desc">Zarządzanie procesami</p>
+    </div>
+    <div class="col-lg-2" id="glyph">
+        <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+        <p id="desc">Statystyki</p>
+    </div>
+    <div class="col-lg-2" id="glyph">
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+        <p id="desc">CRM</p>
+    </div>
+    <div class="col-lg-2" id="glyph">
+        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+        <p id="desc">Zakupy</p>
+    </div>
+</div>
+
+@{
+    var det = (CompanyDetails)ViewData["CompDetails"];
+}
+<div class="container" id="detailsDiv">
+    <h1>Informacje o Firmie</h1>
+    <div class="col-lg-4"><img src="~/resources/company_icon.png" height="150" width="150"/></div>
+    <div class="col-lg-8" id="detailsDiv2">
+        <ul>
+            <li>
+                <h3>@det.CompYears</h3>
+            </li>
+            <li>
+                <h3>@det.Customers</h3>
+            </li>
+            <li>
+                <h3>@det.Employers</h3>
+            </li>
+            <li>
+                <h3>@det.Partners</h3>
+            </li>
+            <li>
+                <h3>@det.Products</h3>
+            </li>
+        </ul>
+            
+    </div>
+</div>   

@@ -46,12 +46,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -142,10 +151,34 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Context\ApplyContext.cs" />
+    <Compile Include="Controllers\ApplyController.cs" />
+    <Compile Include="Controllers\CareerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NavCareerController.cs" />
+    <Compile Include="Controllers\NavCompanyController.cs" />
+    <Compile Include="Controllers\NavContactController.cs" />
+    <Compile Include="Controllers\NavCraftsController.cs" />
+    <Compile Include="Controllers\NavOfferController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807121816091_FirstJobPoster.cs" />
+    <Compile Include="Migrations\201807121816091_FirstJobPoster.Designer.cs">
+      <DependentUpon>201807121816091_FirstJobPoster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807131609556_DeletePropertyAdded.cs" />
+    <Compile Include="Migrations\201807131609556_DeletePropertyAdded.Designer.cs">
+      <DependentUpon>201807131609556_DeletePropertyAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807160850370_ModelChange.cs" />
+    <Compile Include="Migrations\201807160850370_ModelChange.Designer.cs">
+      <DependentUpon>201807160850370_ModelChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ApplyForm.cs" />
+    <Compile Include="Models\CompanyDetails.cs" />
+    <Compile Include="Models\JobPoster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +188,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="resources\company_icon.png" />
+    <Content Include="resources\company_icon_menu.png" />
+    <Content Include="resources\jumb_background.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -171,7 +207,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -185,10 +223,35 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\NavCompany\Index.cshtml" />
+    <Content Include="Views\NavCompany\Profil.cshtml" />
+    <Content Include="Views\NavCompany\Info.cshtml" />
+    <Content Include="Views\NavCompany\History.cshtml" />
+    <Content Include="Views\NavCompany\ExBoard.cshtml" />
+    <Content Include="Views\NavCompany\Partners.cshtml" />
+    <Content Include="Views\NavCompany\Certificate.cshtml" />
+    <Content Include="Views\NavCompany\Recomendation.cshtml" />
+    <Content Include="Views\NavCareer\Index.cshtml" />
+    <Content Include="Views\Apply\ApplyPattern.cshtml" />
+    <Content Include="Views\NavCareer\Practice.cshtml" />
+    <Content Include="Views\Apply\Submit.cshtml" />
+    <Content Include="Views\Test\Details.cshtml" />
+    <Content Include="Views\Test\Create.cshtml" />
+    <Content Include="Views\Apply\DisplayApply.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\NavCareer\Offers.cshtml" />
+    <Content Include="Views\NavCareer\Details.cshtml" />
+    <Content Include="Views\NavCareer\Edit.cshtml" />
+    <Content Include="Views\NavCareer\Create.cshtml" />
+    <Content Include="Views\NavCareer\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Career\" />
+    <Folder Include="Views\CompanyDetails\" />
+    <Folder Include="Views\NavContact\" />
+    <Folder Include="Views\NavCrafts\" />
+    <Folder Include="Views\NavOffer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -202,6 +265,17 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201807121816091_FirstJobPoster.resx">
+      <DependentUpon>201807121816091_FirstJobPoster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807131609556_DeletePropertyAdded.resx">
+      <DependentUpon>201807131609556_DeletePropertyAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807160850370_ModelChange.resx">
+      <DependentUpon>201807160850370_ModelChange.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

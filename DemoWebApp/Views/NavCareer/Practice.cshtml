@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Practice";
+}
+
+<h2>Practice</h2>
+
+@using (Html.BeginForm("Submit", "Apply", FormMethod.Post))
+{
+    <div class="container">
+        
+            <div class="form-group">
+                @*<label for="Name">Imię:</label>
+                <input type="text" class="form-control" name="name">*@
+                @Html.Label("name", "Name:")
+                @Html.TextBox("name")
+            </div>
+            <div class="form-group">
+                @*<label for="Surname">Nazwisko:</label>
+                <input type="text" class="form-control" name="surname">*@
+                @Html.Label("surname", "Surname:")
+                @Html.TextBox("surname")
+            </div>
+            <div class="form-group">
+                @*<label for="Experience">Doświadczenie:</label>
+                <input type="text" class="form-control" name="exp">*@
+                @Html.Label("exp", "Experience:")
+                @Html.TextBox("exp")
+            </div>
+            <div class="form-group">
+                @*<label for="Technologies">Technologie:</label>
+                <input type="text" class="form-control" name="tech">*@
+                @Html.Label("tech", "Technologie:")
+                @Html.TextBox("tech")
+            </div>
+            <div class="form-group">
+                @*<label for="Salary">Wynagrodzenie:</label>
+                <input type="text" class="form-control" name="salary">*@
+                @Html.Label("salary", "Wynagrodzenie:")
+                @Html.TextBox("salary")
+            </div>
+            @Html.ActionLink("Wyślij", "Submit", "Apply")
+
+
+        
+    </div>
+}
