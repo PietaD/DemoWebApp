@@ -9,7 +9,7 @@ namespace DemoWebApp.Controllers
 {
     public class ApplyController : Controller
     {
-        //TO DO: Create a context structure to handle applies - delete code below (old) - show in modal_
+        //TO DO: Create a context structure to handle applies - delete code below (old) - show in modal__
 
         // GET: Apply
         [HttpPost]
