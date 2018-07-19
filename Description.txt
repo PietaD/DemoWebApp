@@ -1,0 +1,18 @@
+Hello,
+
+
+
+This website project is about ERP and have some features in Carrer tab. ...and still needs some work.
+
+
+
+Project contains: ASP.NET MVC, C#, Bootstrap, RazorSyntax, EntityFramework with CodeFirst approach, full CRUD operations,
+		  HTML and CSS.
+
+CRUD operations can be found in -> carrer (dropdown menu) -> actual offers (from dropdown carrer).
+
+In future I will add an APPLY feature (in modal) and "store" forms with appropriate offer.
+
+Best Regards,
+
+Daniel
